@@ -1,5 +1,8 @@
 /*
-
+1. Sort in ascending
+2. Find the distance objects whose total distance is more than a certain value
+3. Change the km of the distance objects whose total distance is more than 1000 to 1
+4. Add the minimum and the maximum distance object
 */
 import java.util.Scanner ;
 class Distance
