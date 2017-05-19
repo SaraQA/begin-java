@@ -1,3 +1,9 @@
+/*
+1. Sort in ascending
+2. Find the distance objects whose total distance is more than a certain value
+3. Change the km of the distance objects whose total distance is more than 1000 to 1
+4. Add the minimum and the maximum distance object
+*/
 import java.util.Scanner ;
 class Distance
 {
@@ -6,7 +12,7 @@ class Distance
 
 	public void initialize(int metre , int kilom)
 	{
-		m = metre	;
+		m = metre ;
 		km = kilom ;
 	}
 
@@ -21,9 +27,20 @@ class Distance
 		return total ;
 	}
 
-	public distance compare(distance dist)
+	public Distance compareMax(Distance dist)
 	{
-		
+		if(add() > dist.add())
+			return this ;
+		else 
+			return dist ;
+	}
+	
+	public Distance compareMin(Distance dist)
+	{
+		if(add() < dist.add())
+			return this ;
+		else 
+			return dist ;
 	}
 
 }
@@ -34,8 +51,9 @@ class DistanceCaller
 	{
 	   	System.out.println("Enter the number of Distances") ;
 		Scanner sc= new Scanner(System.in) ;
-        int number = sc.nextInt() ;
+                int number = sc.nextInt() ;
 		Distance d[] = new Distance[number] ;
+		int kilom ;
 			for(int i=0 ; i<number ; i++) {
 				d[i] = new Distance() ;
 				System.out.println("Enter the distance in m") ;
@@ -43,7 +61,7 @@ class DistanceCaller
 				int metre = sc1.nextInt() ;
 				System.out.println("Enter the distance in km") ;
 				Scanner sc2 = new Scanner(System.in) ;
-				int kilom = sc2.nextInt() ;
+				kilom = sc2.nextInt() ;
 				d[i].initialize(metre , kilom) ;
 				d[i].display() ;
 				int t =	d[i].add() ;
@@ -92,15 +110,22 @@ class DistanceCaller
 							
 					case 3 :
 							for(int k = 0 ; k < number ;k++ ) {
-								if(d[k].add() > 1000 )
-									d[k].initialize(1,d[k].km) ;
-									d[k].display() ;
+								if(d[k].add() > 1000 ) 
+								d[k].initialize(1,0 );
+								d[k].display() ;
 							}
 							break ;
 					
 					case 4 : 
+							Distance max = d[0] ;
+							Distance min = d[0] ;
 							for(int k = 0 ; k < number ;k++ ) {
-					
+							max = max.compareMax(d[k]) ;
+							min = min.compareMin(d[k]) ;
+							}
+							int total_value = min.add() + max.add() ;
+							System.out.println("addition of min and max distance is : " +total_value) ;
+							
 				}
 				
 				System.out.println("Do you want to continue ? 1. Yes   2. No") ;
