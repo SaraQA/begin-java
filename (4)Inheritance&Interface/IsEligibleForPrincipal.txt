@@ -1,0 +1,88 @@
+package javaPrax;
+import java.util.Scanner ;
+class Person
+{
+	private String name ;
+	protected int age ;
+	protected static Scanner sc = new Scanner(System.in) ;
+	
+	public void initialize()
+	{
+        System.out.println("Enter name") ;
+        String n = sc.next() ;
+		name = n ;
+		System.out.println("Enter age") ;
+		int a = sc.nextInt() ;
+		age = a ;
+	}
+	
+	public String toString()
+	{
+		return "The name is : " +name +"\nThe age is : " +age;
+	}
+}
+
+class Staff extends Person
+{
+	protected int exp ;
+	
+	public void initialize()
+	{
+		super.initialize() ;
+		System.out.println("Enter experience") ;
+		int e = sc.nextInt() ;
+		exp = e ;
+	}
+	
+	public String toString()
+	{
+		return super.toString() +"\nThe experience is : " +exp ;
+	}
+	
+	
+}
+
+class Teacher extends Staff
+{
+	private String qualification ;
+	
+	public void initialize()
+	{
+		super.initialize() ;
+		System.out.println("Enter qualification") ;
+		String q = sc.next() ;
+		qualification = q ;
+	}
+	
+	public String toString()
+	{
+		return super.toString() +"\nThe qualification is : " +qualification ;
+	}
+	
+	public boolean isPrincipal()
+	{
+		if(age > 50 && exp>15)
+		{
+			if(qualification.equalsIgnoreCase("PhD")) 
+				return true ;
+			else return false ;
+		}
+		else
+			return false ;
+	}
+} 
+
+class PrincipalCaller
+{
+	public static void main(String[] args)
+	{
+		Teacher t = new Teacher() ;
+		t.initialize() ;
+		System.out.println(t) ;
+		if(t.isPrincipal())
+		System.out.println("Eligible of becoming a Principal") ;
+		else
+		System.out.println("Not yet Eligible of becoming a Principal") ;
+
+	}	
+}
