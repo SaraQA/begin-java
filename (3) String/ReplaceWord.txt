@@ -1,0 +1,32 @@
+// Initialize a string. Replace all the occurences of the word Hello with Bye. Do this is two different ways.
+// First way
+import java.util.Scanner ;
+class ReplaceWord
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Enter string") ;
+		Scanner sc = new Scanner(System.in) ;
+		String s = sc.nextLine() ;
+		String m = sc.replace("Hello" , "Bye") ;
+		//String m = s.replaceAll("Hello" , "Bye") ;
+		System.out.println(s) ;
+		System.out.println(m) ;
+	}
+}
+
+
+// SecondWay
+
+class ReplaceWord2
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Enter string") ;
+		Scanner sc = new Scanner(System.in) ;
+		String s = sc.nextLine() ;
+		String m = sc.replace("Hello" , "Bye") ;
+		System.out.println(s) ;
+		System.out.println(m) ;
+	} 
+}
